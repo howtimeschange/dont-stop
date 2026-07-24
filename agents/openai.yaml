@@ -1,0 +1,4 @@
+interface:
+  display_name: "Don't Stop"
+  short_description: "把开发任务闭环执行到实现、测试、自修复、复验和证据化交付"
+  default_prompt: "Use $dont-stop to complete this change through implementation, testing, self-repair, and evidence-backed delivery."
