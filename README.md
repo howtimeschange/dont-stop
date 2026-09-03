@@ -29,6 +29,57 @@ The skill treats unit tests as necessary but not always sufficient. UI,
 integration, browser, provider, exported-artifact, packaged-app, and release
 work should be verified on the strongest practical surface.
 
+## Long-task continuity
+
+Long-running work can cross multiple model context windows. For any
+multi-phase or context-compaction-prone task, `dont-stop` maintains a compact
+checkpoint before expensive actions. It prefers a first-class plan/state that
+the host can preserve across compaction, such as `update_plan`. If that
+persistence is not guaranteed, it uses
+`.codex-tmp/dont-stop/<task-id>/checkpoint.json` as a non-deliverable fallback.
+
+The checkpoint contains bounded, structured state rather than a transcript:
+
+- current step, completed steps, one next action, and evidence pointers/results;
+- stable acceptance-criterion states and completed, failed, or in-flight
+  operation records with input fingerprints and outcomes;
+- scope and authorization boundaries, request IDs when applicable, and a
+  no-repeat list.
+
+It excludes giant logs, raw transcripts, secrets, tokens, and screenshots.
+After compaction or handoff, the agent reads the checkpoint and current plan
+first, reconciles only the current step, and preserves verified work. Missing
+or contradictory state gets one bounded inventory before resuming; compaction
+alone is never a reason to restart from the original first step. When the
+user changes scope, the affected step is appended or revised while verified
+steps and their evidence are preserved.
+
+## Action-state gate
+
+Before every expensive read, write, test, or deployment, the skill records an
+operation key:
+
+```text
+operation_key = phase | target | operation | input-hash
+```
+
+The recorded state controls the next action:
+
+| State | Next action |
+| --- | --- |
+| `verified` | Reuse the evidence; rerun only if inputs or dependencies changed. |
+| `failed` | Change the hypothesis or input before retrying. |
+| `unknown` | Inspect logs, status, or readback before resending. |
+| `in_progress` | Check whether the original operation is still running. |
+| `blocked` | Complete safe independent work, then report the blocker. |
+
+Timeouts, interruptions, and lost responses from external operations are
+`unknown`, not proof of failure. External writes require readback before a
+retry, and the same request is never blindly resent. If the same operation key
+has the same inputs and outcome twice, a third identical attempt is forbidden;
+the agent must change the hypothesis or input, wait for a defined state
+transition, or stop with the evidence-backed blocker.
+
 ## When to use it
 
 Use the skill for implementation requests such as:
