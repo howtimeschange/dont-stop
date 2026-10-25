@@ -1,7 +1,5 @@
 # Don't Stop
 
-**[访问抓虾 Harness 官网 · 查看介绍与下载](https://harness.crawshrimp.com/)**
-
 [English](README.md) | [简体中文](README.zh-CN.md)
 
 一个面向 Codex 及兼容 Agent Skill 运行时的自主交付闭环技能：
