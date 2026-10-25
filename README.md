@@ -1,7 +1,5 @@
 # Don't Stop
 
-**[Crawshrimp Harness · Overview & downloads](https://harness.crawshrimp.com/)**
-
 [English](README.md) | [简体中文](README.zh-CN.md)
 
 An autonomous completion-loop skill for Codex and compatible agent-skill
