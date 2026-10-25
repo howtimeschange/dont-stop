@@ -1,5 +1,7 @@
 # Don't Stop
 
+**[访问抓虾 Harness 官网 · 查看介绍与下载](https://harness.crawshrimp.com/)**
+
 [English](README.md) | [简体中文](README.zh-CN.md)
 
 一个面向 Codex 及兼容 Agent Skill 运行时的自主交付闭环技能：
@@ -9,6 +11,16 @@
 `dont-stop` 会让已经获得授权的开发任务持续穿过可恢复故障，直到请求的结果
 真正得到验证。它解决的核心问题是：Agent 写完代码、跑一次检查，就把后续调试
 或验收工作重新交还给用户。
+
+## 合作交流与赞助
+
+欢迎联系作者，交流 Agent 可靠执行、长任务连续性与证据化交付，探讨技能集成和项目合作，或赞助支持 Don't Stop 持续维护。
+
+使用微信扫描下方二维码添加作者，备注「Don't Stop + 合作 / 交流 / 赞助」。
+
+<a href="https://crawshrimp.com/wechat-qr.jpg">
+  <img src="https://crawshrimp.com/wechat-qr.jpg" alt="Don't Stop作者的微信联系二维码，用于合作交流与赞助联系" width="280" />
+</a>
 
 ## 它会强制执行什么
 
