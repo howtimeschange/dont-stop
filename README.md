@@ -1,5 +1,7 @@
 # Don't Stop
 
+**[Crawshrimp Harness · Overview & downloads](https://harness.crawshrimp.com/)**
+
 [English](README.md) | [简体中文](README.zh-CN.md)
 
 An autonomous completion-loop skill for Codex and compatible agent-skill
@@ -11,6 +13,16 @@ runtimes:
 failures until the requested outcome is actually verified. It prevents the
 common failure mode where an agent writes code, runs one check, and hands the
 remaining debugging or validation back to the user.
+
+## Contact, collaboration & sponsorship
+
+Connect with the author to discuss reliable agent workflows, long-task continuity, and evidence-based delivery. Collaboration and sponsorship to support ongoing development are welcome.
+
+Scan the WeChat QR code below to connect with the author. Please mention “Don't Stop + collaboration / discussion / sponsorship” in your request.
+
+<a href="https://crawshrimp.com/wechat-qr.jpg">
+  <img src="https://crawshrimp.com/wechat-qr.jpg" alt="Author's WeChat contact QR code for Don't Stop collaboration and sponsorship" width="280" />
+</a>
 
 ## What it enforces
 
